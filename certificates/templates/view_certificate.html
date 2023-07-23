@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Certificate</title>
+</head>
+<body>
+    <h1>View Certificate</h1>
+    <h2>{{ certificate.name }}</h2>
+    <p>Issue Date: {{ certificate.issue_date }}</p>
+    <p>{{ certificate.content }}</p>
+    {% if certificate.is_verified %}
+        <p>Verification Status: Verified</p>
+    {% else %}
+        <p>Verification Status: Not Verified</p>
+        <form method="post" action="{% url 'verify_certificate' %}">
+            {% csrf_token %}
+            <input type="hidden" name="certificate_id" value="{{ certificate.id }}">
+            <input type="submit" value="Verify Certificate">
+        </form>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- certificates/templates/create_certificate.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Certificate</title>
+</head>
+<body>
+    <h1>Create a New Certificate</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Certificate Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" required></textarea><br>
+
+        <label for="issue_date">Issue Date:</label>
+        <input type="date" id="issue_date" name="issue_date" required><br>
+
+        <input type="submit" value="Create Certificate">
+    </form>
+</body>
+</html>
